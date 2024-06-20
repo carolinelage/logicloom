@@ -5,9 +5,12 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import MatricOficinas from './../screens/Pedagogo/MatricOficinas/MatricOficinas';
 import CadOficinas from './../screens/Pedagogo/CadOficinas/CadOficinas';
 import MainScreen from '../screens/MainScreen';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import ProfileScreen from '../screens/Profile/ProfileScreen';
 
 
 const Drawer = createDrawerNavigator();
+const Stack = createNativeStackNavigator();
 
 function MyDrawer() {
   return (
@@ -22,7 +25,10 @@ function MyDrawer() {
 export default function AppNavigation() {
     return (
       <NavigationContainer>
-      <MyDrawer />
+        <Stack.Navigator>
+          <Stack.Screen name="Home" options={{headerShown: false}} component={MyDrawer} />
+          <Stack.Screen name="Profile" options={{headerShown: false}} component={ProfileScreen} />
+        </Stack.Navigator>
     </NavigationContainer>
     )
 }
